@@ -3,4 +3,4 @@ project(Sdizo1)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Sdizo1 main.cpp List.cpp List.h ListElements.cpp ListElements.h)
+add_executable(Sdizo1 main.cpp DoublyLinkedList.cpp DoublyLinkedList.h Node.cpp Node.h)
