@@ -19,11 +19,29 @@ DoublyLinkedList::~DoublyLinkedList() {
 }
 
 void DoublyLinkedList::insertHead(int value) {
-
+    Node *node = new Node(value, nullptr, nullptr);
+    node->next = head;
+    if(head != nullptr){
+        head->prev = node;
+    }
+    else{
+        tail = node;
+    }
+    head = node;
+    size++;
 }
 
 void DoublyLinkedList::insertTail(int value) {
-
+    Node *node = new Node(value, nullptr, nullptr);
+    node->prev = tail;
+    if(tail != nullptr){
+        tail->next = node;
+    }
+    else{
+        head = node;
+    }
+    tail = node;
+    size++;
 }
 
 void DoublyLinkedList::insert(int value, int index) {
