@@ -1,11 +1,12 @@
 #include <iostream>
+#include "Tests.h"
+
 
 using namespace std;
 
 int main() {
-
+    Tests tests;
     int choise = -1;
-
 
     while (choise != 0) {
         cout << "Select data structure:" << endl;
@@ -17,16 +18,17 @@ int main() {
         cout << "Choise: ";
         cin >> choise;
 
-        if (choise == 0) return 0;
+        switch (choise) {
+            case 0:
+                return 0;
+            case 1:
+                tests.DoublyLinkedListTest();
+                break;
+            case 2:
+                tests.ArrayTest();
+                break;
+        }
+
     }
-
-
-
-
-
-
-
-
-
     return 0;
 }

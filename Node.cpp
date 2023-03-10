@@ -3,3 +3,9 @@
 //
 
 #include "Node.h"
+
+Node::Node(int value, Node *prev, Node *next) {
+    Node::value = value;
+    Node::prev = prev;
+    Node::next = next;
+}

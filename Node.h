@@ -13,7 +13,7 @@ public:
     Node *prev;
     Node *next;
 
-    Node(int, Node *, Node *);
+    Node(int value, Node *prev, Node *next);
 };
 
 

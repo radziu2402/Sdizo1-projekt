@@ -13,12 +13,12 @@ class DoublyLinkedList {
 public:
     int size;
 
+    Node *head;
+    Node *tail;
+
     DoublyLinkedList();
 
     ~DoublyLinkedList();
-
-    Node *head;
-    Node *tail;
 
     void insertHead(int value);
 
@@ -33,6 +33,7 @@ public:
     void remove(int index);
 
     void displayList();
+    void displayListBackward();
 
     bool checkIfExist(int value);
 };
