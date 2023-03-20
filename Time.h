@@ -20,7 +20,7 @@ public:
 
     void timeStop();
 
-    long elapsedTime();
+    long int elapsedTime();
 };
 
 

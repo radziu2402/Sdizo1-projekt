@@ -289,7 +289,6 @@ void Tests::RedBlackTreeTest() {
     RedBlackTree rBTree;
     int choise = -1;
     int value;
-    bool ifExist;
     while (choise != 0) {
         cout << "Choose what do you want to do:" << endl;
         cout << "    1. Insert value" << endl;
@@ -370,6 +369,5 @@ void Tests::RedBlackTreeTest() {
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
                 break;
         }
-
     }
 }

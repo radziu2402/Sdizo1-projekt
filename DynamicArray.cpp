@@ -14,10 +14,7 @@ DynamicArray::DynamicArray() {
 }
 
 DynamicArray::~DynamicArray() {
-
-    if (head != nullptr) {
-        delete []head;
-    }
+    delete []head;
 }
 
 void DynamicArray::insertHead(int value) {
@@ -124,7 +121,6 @@ void DynamicArray::remove(int index) {
     } else {
         cout << "There is no element with index: [" << index << "]!" << endl;
     }
-
 }
 
 void DynamicArray::displayArray() {
