@@ -4,6 +4,7 @@
 
 #include "Time.h"
 #include <chrono>
+
 using namespace std;
 using namespace std::chrono;
 
@@ -17,5 +18,5 @@ void Time::timeStop() {
 }
 
 long Time::elapsedTime() {
-    return duration_cast<nanoseconds> (endTime - initialTime).count();
+    return duration_cast<nanoseconds>(endTime - initialTime).count();
 }

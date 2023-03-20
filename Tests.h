@@ -4,6 +4,7 @@
 
 #ifndef SDIZO1_TESTS_H
 #define SDIZO1_TESTS_H
+
 class Tests {
 
 public:
@@ -16,4 +17,5 @@ public:
 
     void RedBlackTreeTest();
 };
+
 #endif //SDIZO1_TESTS_H

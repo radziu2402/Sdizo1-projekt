@@ -362,10 +362,9 @@ void FromFileTests::BinaryHeapTest() {
                 time.timeStart();
                 bool ifExist;
                 ifExist = binaryHeap.checkIfExist(rand() % 500000 - 1);
-                if (ifExist){
+                if (ifExist) {
                     cout << "This element exists in Heap " << endl;
-                }
-                else
+                } else
                     cout << "This element doesn't exists in Heap " << endl;
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
@@ -454,10 +453,9 @@ void FromFileTests::RedBlackTreeTest() {
                     rBTree.insert(value);
                 }
                 time.timeStart();
-                if(rBTree.searchTree(rand() % 500000 - 1) != nullptr){
+                if (rBTree.searchTree(rand() % 500000 - 1) != nullptr) {
                     cout << "This element exists in Tree " << endl;
-                }
-                else
+                } else
                     cout << "This element doesn't exists in Tree " << endl;
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;

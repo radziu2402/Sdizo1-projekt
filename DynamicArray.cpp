@@ -14,7 +14,7 @@ DynamicArray::DynamicArray() {
 }
 
 DynamicArray::~DynamicArray() {
-    delete []head;
+    delete[]head;
 }
 
 void DynamicArray::insertHead(int value) {
@@ -39,7 +39,7 @@ void DynamicArray::insertTail(int value) {
         newHead[i] = head[i];
     }
 
-    delete [] head;
+    delete[] head;
     head = newHead;
 
     size++;
@@ -60,7 +60,7 @@ void DynamicArray::insert(int value, int index) {
             newHead[i + 1] = head[i];
         }
 
-        delete [] head;
+        delete[] head;
         head = newHead;
 
         size++;

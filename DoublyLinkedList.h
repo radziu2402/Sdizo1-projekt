@@ -33,6 +33,7 @@ public:
     void remove(int index);
 
     void displayList();
+
     void displayListBackward();
 
     bool checkIfExist(int value);

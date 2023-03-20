@@ -24,10 +24,9 @@ DoublyLinkedList::~DoublyLinkedList() {
 void DoublyLinkedList::insertHead(int value) {
     ListNode *node = new ListNode(value, nullptr, nullptr);
     node->next = head;
-    if(head != nullptr){
+    if (head != nullptr) {
         head->prev = node;
-    }
-    else{
+    } else {
         tail = node;
     }
     head = node;
@@ -37,10 +36,9 @@ void DoublyLinkedList::insertHead(int value) {
 void DoublyLinkedList::insertTail(int value) {
     ListNode *node = new ListNode(value, nullptr, nullptr);
     node->prev = tail;
-    if(tail != nullptr){
+    if (tail != nullptr) {
         tail->next = node;
-    }
-    else{
+    } else {
         head = node;
     }
     tail = node;
@@ -56,16 +54,12 @@ void DoublyLinkedList::insert(int value, int index) {
     if (index == 0) {
         insertHead(value);
         return;
-    }
-
-    else if (index == size - 1) {
+    } else if (index == size - 1) {
         insertTail(value);
         return;
-    }
-
-    else{
+    } else {
         ListNode *prev_node = head;
-        for (int i = 0; i < index-1; i++) {
+        for (int i = 0; i < index - 1; i++) {
             prev_node = prev_node->next;
         }
         ListNode *next_node = prev_node->next;
@@ -78,23 +72,21 @@ void DoublyLinkedList::insert(int value, int index) {
 }
 
 void DoublyLinkedList::removeHead() {
-    if(head != nullptr){
+    if (head != nullptr) {
         head->next->prev = nullptr;
         head = head->next;
         size--;
-    }
-    else{
+    } else {
         cout << "List is empty" << endl;
     }
 }
 
 void DoublyLinkedList::removeTail() {
-    if(tail != nullptr){
+    if (tail != nullptr) {
         tail->prev->next = nullptr;
         tail = tail->prev;
         size--;
-    }
-    else{
+    } else {
         cout << "List is empty" << endl;
     }
 }
@@ -117,45 +109,42 @@ void DoublyLinkedList::remove(int index) {
 }
 
 void DoublyLinkedList::displayList() {
-    if(head != nullptr){
+    if (head != nullptr) {
         ListNode *tempNode = head;
-        while (tempNode != nullptr){
+        while (tempNode != nullptr) {
             cout << tempNode->value << " ";
             tempNode = tempNode->next;
         }
         cout << endl;
-    }
-    else{
+    } else {
         cout << "List is empty" << endl;
     }
 }
 
 void DoublyLinkedList::displayListBackward() {
-    if(head != nullptr){
+    if (head != nullptr) {
         ListNode *tempNode = tail;
-        while (tempNode != nullptr){
+        while (tempNode != nullptr) {
             cout << tempNode->value << " ";
             tempNode = tempNode->prev;
         }
-    }
-    else{
+    } else {
         cout << "List is empty" << endl;
     }
 }
 
 bool DoublyLinkedList::checkIfExist(int value) {
-    if(head != nullptr){
+    if (head != nullptr) {
         ListNode *tempNode = head;
-        while (tempNode->value != value){
+        while (tempNode->value != value) {
             tempNode = tempNode->next;
-            if(!tempNode){
+            if (!tempNode) {
                 return false;
             }
         }
         cout << "This value exists in list" << endl;
         return true;
-    }
-    else{
+    } else {
         cout << "List is empty" << endl;
         return false;
     }

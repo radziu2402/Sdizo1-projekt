@@ -26,32 +26,28 @@ int main() {
             case 0:
                 return 0;
             case 1:
-                if(fromFile == "yes"){
+                if (fromFile == "yes") {
                     fromFileTests.DoublyLinkedListTest();
-                }
-                else
-                tests.DoublyLinkedListTest();
+                } else
+                    tests.DoublyLinkedListTest();
                 break;
             case 2:
-                if(fromFile == "yes"){
+                if (fromFile == "yes") {
                     fromFileTests.ArrayTest();
-                }
-                else
-                tests.ArrayTest();
+                } else
+                    tests.ArrayTest();
                 break;
             case 3:
-                if(fromFile == "yes"){
+                if (fromFile == "yes") {
                     fromFileTests.BinaryHeapTest();
-                }
-                else
-                tests.BinaryHeapTest();
+                } else
+                    tests.BinaryHeapTest();
                 break;
             case 4:
-                if(fromFile == "yes"){
+                if (fromFile == "yes") {
                     fromFileTests.RedBlackTreeTest();
-                }
-                else
-                tests.RedBlackTreeTest();
+                } else
+                    tests.RedBlackTreeTest();
                 break;
             default:
                 cout << "Wrong choise!" << endl;

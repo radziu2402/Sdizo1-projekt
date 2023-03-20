@@ -67,6 +67,7 @@ void BinaryHeap::displayHeap() {
         cout << "Heap is empty" << endl;
     }
 }
+
 bool BinaryHeap::heapTest() {
     int i = size - 1;
     for (; i > 0; --i) {
@@ -79,6 +80,7 @@ bool BinaryHeap::heapTest() {
     cout << "Heap is correct" << endl;
     return true;
 }
+
 void BinaryHeap::heapify() {
     int parent, leftChild, rightChild, maxChild;
     for (int i = size - 1; i >= 0; i--) {

@@ -17,5 +17,4 @@ public:
 };
 
 
-
 #endif //SDIZO1_LISTNODE_H

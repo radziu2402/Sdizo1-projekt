@@ -264,10 +264,9 @@ void Tests::BinaryHeapTest() {
                 cin >> value;
                 time.timeStart();
                 ifExist = binaryHeap.checkIfExist(value);
-                if (ifExist){
+                if (ifExist) {
                     cout << "This element exists in Heap " << endl;
-                }
-                else
+                } else
                     cout << "This element doesn't exists in Heap " << endl;
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
@@ -331,10 +330,9 @@ void Tests::RedBlackTreeTest() {
                 cout << "Enter value: ";
                 cin >> value;
                 time.timeStart();
-                if(rBTree.searchTree(value) != nullptr){
+                if (rBTree.searchTree(value) != nullptr) {
                     cout << "This element exists in Tree " << endl;
-                }
-                else
+                } else
                     cout << "This element doesn't exists in Tree " << endl;
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
