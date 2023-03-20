@@ -17,5 +17,5 @@ void Time::timeStop() {
 }
 
 long Time::elapsedTime() {
-    return duration_cast<milliseconds> (initialTime - endTime).count();
+    return duration_cast<nanoseconds> (endTime - initialTime).count();
 }

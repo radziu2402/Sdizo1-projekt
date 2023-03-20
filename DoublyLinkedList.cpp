@@ -22,7 +22,7 @@ DoublyLinkedList::~DoublyLinkedList() {
 }
 
 void DoublyLinkedList::insertHead(int value) {
-    Node *node = new Node(value, nullptr, nullptr);
+    ListNode *node = new ListNode(value, nullptr, nullptr);
     node->next = head;
     if(head != nullptr){
         head->prev = node;
@@ -35,7 +35,7 @@ void DoublyLinkedList::insertHead(int value) {
 }
 
 void DoublyLinkedList::insertTail(int value) {
-    Node *node = new Node(value, nullptr, nullptr);
+    ListNode *node = new ListNode(value, nullptr, nullptr);
     node->prev = tail;
     if(tail != nullptr){
         tail->next = node;
@@ -64,12 +64,12 @@ void DoublyLinkedList::insert(int value, int index) {
     }
 
     else{
-        Node *prev_node = head;
+        ListNode *prev_node = head;
         for (int i = 0; i < index-1; i++) {
             prev_node = prev_node->next;
         }
-        Node *next_node = prev_node->next;
-        Node *node = new Node(value, prev_node, next_node);
+        ListNode *next_node = prev_node->next;
+        ListNode *node = new ListNode(value, prev_node, next_node);
         prev_node->next = node;
         next_node->prev = node;
     }
@@ -118,11 +118,12 @@ void DoublyLinkedList::remove(int index) {
 
 void DoublyLinkedList::displayList() {
     if(head != nullptr){
-        Node *tempNode = head;
+        ListNode *tempNode = head;
         while (tempNode != nullptr){
             cout << tempNode->value << " ";
             tempNode = tempNode->next;
         }
+        cout << endl;
     }
     else{
         cout << "List is empty" << endl;
@@ -131,7 +132,7 @@ void DoublyLinkedList::displayList() {
 
 void DoublyLinkedList::displayListBackward() {
     if(head != nullptr){
-        Node *tempNode = tail;
+        ListNode *tempNode = tail;
         while (tempNode != nullptr){
             cout << tempNode->value << " ";
             tempNode = tempNode->prev;
@@ -144,7 +145,7 @@ void DoublyLinkedList::displayListBackward() {
 
 bool DoublyLinkedList::checkIfExist(int value) {
     if(head != nullptr){
-        Node *tempNode = head;
+        ListNode *tempNode = head;
         while (tempNode->value != value){
             tempNode = tempNode->next;
             if(!tempNode){

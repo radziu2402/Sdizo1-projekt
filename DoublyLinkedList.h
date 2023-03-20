@@ -6,15 +6,15 @@
 #define SDIZO1_DOUBLYLINKEDLIST_H
 
 
-#include "Node.h"
+#include "ListNode.h"
 
 class DoublyLinkedList {
 
 public:
     int size;
 
-    Node *head;
-    Node *tail;
+    ListNode *head;
+    ListNode *tail;
 
     DoublyLinkedList();
 

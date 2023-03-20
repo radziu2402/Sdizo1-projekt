@@ -3,4 +3,4 @@ project(Sdizo1)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Sdizo1 main.cpp DoublyLinkedList.cpp DoublyLinkedList.h Node.cpp Node.h DoublyLinkedList.h DynamicArray.h DynamicArray.cpp Tests.cpp Tests.h Time.cpp Time.h)
+add_executable(Sdizo1 main.cpp DoublyLinkedList.cpp DoublyLinkedList.h ListNode.cpp ListNode.h DoublyLinkedList.h DynamicArray.h DynamicArray.cpp Tests.cpp Tests.h Time.cpp Time.h BinaryHeap.cpp BinaryHeap.h BinaryHeap.h RedBlackTree.cpp RedBlackTree.h FromFileTests.cpp FromFileTests.h)

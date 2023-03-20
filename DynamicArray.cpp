@@ -133,7 +133,7 @@ void DynamicArray::displayArray() {
         for (int i = 0; i < size; i++) {
             cout << head[i] << ", ";
         }
-        cout << "]";
+        cout << "]" << endl;
     } else {
         cout << "Array is empty" << endl;
     }

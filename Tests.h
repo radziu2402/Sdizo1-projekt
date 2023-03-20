@@ -12,8 +12,8 @@ public:
 
     void DoublyLinkedListTest();
 
-    void testKopca();
+    void BinaryHeapTest();
 
-    void testDrzewa();
+    void RedBlackTreeTest();
 };
 #endif //SDIZO1_TESTS_H
