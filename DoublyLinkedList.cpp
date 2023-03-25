@@ -106,6 +106,14 @@ void DoublyLinkedList::remove(int index) {
         removeTail();
         return;
     }
+    ListNode* node = head;
+    for (int i = 0; i < index; i++) {
+        node = node->next;
+    }
+    node->prev->next = node->next;
+    node->next->prev = node->prev;
+    delete node;
+    size--;
 }
 
 void DoublyLinkedList::displayList() {
