@@ -13,6 +13,158 @@
 
 using namespace std;
 
+void FromFileTests::DoublyLinkedListTest() {
+    srand(time(nullptr));
+    Time time;
+    DoublyLinkedList list;
+    int choise = -1;
+    int value;
+    int randNum;
+    int randIndex;
+    string inputFileName;
+    ifstream inputFile;
+
+    cout << "Enter name of input file with data:  ";
+    cin >> inputFileName;
+
+    inputFile.open(inputFileName);
+
+    if (inputFile.is_open()) {
+        cout << "Input file opened." << inputFileName << endl;
+    } else {
+        cout << "Failed to open input file." << endl;
+        return;
+    }
+
+    while (choise != 0) {
+        cout << "Choose what do you want to do:" << endl;
+        cout << "   1. Insert head" << endl;
+        cout << "   2. Insert tail" << endl;
+        cout << "   3. Insert anywhere" << endl;
+        cout << "   4. Remove head" << endl;
+        cout << "   5. Remove tail" << endl;
+        cout << "   6. Remove any" << endl;
+        cout << "   7. Check if exists" << endl;
+        cout << "   8. Display array" << endl;
+        cout << "   9. Display array backwards" << endl;
+        cout << "   0. Exit" << endl << endl;
+        cout << "Choise: ";
+        cin >> choise;
+
+        switch (choise) {
+            default:
+                cout << "Wrong choise!" << endl;
+                break;
+
+            case 0:
+                break;
+
+            case 1:
+                while (inputFile.good()) {
+                    inputFile >> value;
+                    list.insertHead(value);
+                }
+                randNum = rand() % 1000 - 1;
+                time.timeStart();
+                list.insertHead(randNum);
+                time.timeStop();
+                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                inputFile.close();
+                break;
+
+            case 2:
+                while (inputFile.good()) {
+                    inputFile >> value;
+                    list.insertHead(value);
+                }
+                randNum = rand() % 1000 - 1;
+                time.timeStart();
+                list.insertTail(randNum);
+                time.timeStop();
+                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                inputFile.close();
+                break;
+
+            case 3:
+                while (inputFile.good()) {
+                    inputFile >> value;
+                    list.insertHead(value);
+                }
+                randNum = rand() % 1000 - 1;
+                randIndex = rand() % list.size;
+                time.timeStart();
+                list.insert(randNum, randIndex);
+                time.timeStop();
+                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                inputFile.close();
+                break;
+
+            case 4:
+                while (inputFile.good()) {
+                    inputFile >> value;
+                    list.insertHead(value);
+                }
+                time.timeStart();
+                list.removeHead();
+                time.timeStop();
+                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                inputFile.close();
+                break;
+
+            case 5:
+                while (inputFile.good()) {
+                    inputFile >> value;
+                    list.insertHead(value);
+                }
+                time.timeStart();
+                list.removeTail();
+                time.timeStop();
+                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                inputFile.close();
+                break;
+
+            case 6:
+                while (inputFile.good()) {
+                    inputFile >> value;
+                    list.insertHead(value);
+                }
+                randIndex = rand() % list.size;
+                time.timeStart();
+                list.remove(randIndex);
+                time.timeStop();
+                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                inputFile.close();
+                break;
+
+            case 7:
+                while (inputFile.good()) {
+                    inputFile >> value;
+                    list.insertHead(value);
+                }
+                randNum = rand() % 1000 - 1;
+                time.timeStart();
+                list.checkIfExist(randNum);
+                time.timeStop();
+                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                inputFile.close();
+                break;
+
+            case 8:
+                time.timeStart();
+                list.displayList();
+                time.timeStop();
+                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                break;
+            case 9:
+                time.timeStart();
+                list.displayListBackward();
+                time.timeStop();
+                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                break;
+        }
+    }
+}
+
 void FromFileTests::ArrayTest() {
     srand(time(nullptr));
     Time time;
@@ -144,150 +296,6 @@ void FromFileTests::ArrayTest() {
             case 8:
                 time.timeStart();
                 array.displayArray();
-                time.timeStop();
-                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                break;
-        }
-    }
-}
-
-void FromFileTests::DoublyLinkedListTest() {
-    srand(time(nullptr));
-    Time time;
-    DoublyLinkedList list;
-    int choise = -1;
-    int value;
-    string inputFileName;
-    ifstream inputFile;
-
-    cout << "Enter name of input file with data:  ";
-    cin >> inputFileName;
-
-    inputFile.open(inputFileName);
-
-    if (inputFile.is_open()) {
-        cout << "Input file opened." << inputFileName << endl;
-    } else {
-        cout << "Failed to open input file." << endl;
-        return;
-    }
-
-    while (choise != 0) {
-        cout << "Choose what do you want to do:" << endl;
-        cout << "   1. Insert head" << endl;
-        cout << "   2. Insert tail" << endl;
-        cout << "   3. Insert anywhere" << endl;
-        cout << "   4. Remove head" << endl;
-        cout << "   5. Remove tail" << endl;
-        cout << "   6. Remove any" << endl;
-        cout << "   7. Check if exists" << endl;
-        cout << "   8. Display array" << endl;
-        cout << "   9. Display array backwards" << endl;
-        cout << "   0. Exit" << endl << endl;
-        cout << "Choise: ";
-        cin >> choise;
-
-        switch (choise) {
-            default:
-                cout << "Wrong choise!" << endl;
-                break;
-
-            case 0:
-                break;
-
-            case 1:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    list.insertHead(value);
-                }
-                time.timeStart();
-                list.insertHead(rand() % 500000 - 1);
-                time.timeStop();
-                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
-                break;
-
-            case 2:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    list.insertHead(value);
-                }
-                time.timeStart();
-                list.insertTail(rand() % 500000 - 1);
-                time.timeStop();
-                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
-                break;
-
-            case 3:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    list.insertHead(value);
-                }
-                time.timeStart();
-                list.insert(rand() % 500000 - 1, rand() % list.size);
-                time.timeStop();
-                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
-                break;
-
-            case 4:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    list.insertHead(value);
-                }
-                time.timeStart();
-                list.removeHead();
-                time.timeStop();
-                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
-                break;
-
-            case 5:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    list.insertHead(value);
-                }
-                time.timeStart();
-                list.removeTail();
-                time.timeStop();
-                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
-                break;
-
-            case 6:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    list.insertHead(value);
-                }
-                time.timeStart();
-                list.remove(rand() % list.size);
-                time.timeStop();
-                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
-                break;
-
-            case 7:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    list.insertHead(value);
-                }
-                time.timeStart();
-                list.checkIfExist(rand() % 500000 - 1);
-                time.timeStop();
-                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
-                break;
-
-            case 8:
-                time.timeStart();
-                list.displayList();
-                time.timeStop();
-                cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                break;
-            case 9:
-                time.timeStart();
-                list.displayListBackward();
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
                 break;

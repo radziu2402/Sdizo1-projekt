@@ -33,8 +33,7 @@ void BinaryHeap::insert(int value) {
     delete[]array;
     array = newArray;
     size++;
-    BinaryHeap::heapify();
-    BinaryHeap::heapTest();
+    heapify();
 }
 
 void BinaryHeap::deleteRoot() {
@@ -45,9 +44,8 @@ void BinaryHeap::deleteRoot() {
         }
         delete[]array;
         array = newArray;
-        BinaryHeap::heapify();
+        heapify();
         size--;
-        BinaryHeap::heapTest();
     }
 }
 
@@ -68,18 +66,6 @@ void BinaryHeap::displayHeap() {
     }
 }
 
-bool BinaryHeap::heapTest() {
-    int i = size - 1;
-    for (; i > 0; --i) {
-        unsigned int parentIndex = (i - 1) / 2;
-        if (array[i] > array[parentIndex]) {
-            cout << "Heap is incorrect" << endl;
-            return false;
-        }
-    }
-    cout << "Heap is correct" << endl;
-    return true;
-}
 
 void BinaryHeap::heapify() {
     int parent, leftChild, rightChild, maxChild;
