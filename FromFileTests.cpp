@@ -45,8 +45,8 @@ void FromFileTests::DoublyLinkedListTest() {
         cout << "   5. Remove tail" << endl;
         cout << "   6. Remove any" << endl;
         cout << "   7. Check if exists" << endl;
-        cout << "   8. Display array" << endl;
-        cout << "   9. Display array backwards" << endl;
+        cout << "   8. Display list" << endl;
+        cout << "   9. Display list backwards" << endl;
         cout << "   0. Exit" << endl << endl;
         cout << "Choise: ";
         cin >> choise;
@@ -64,7 +64,7 @@ void FromFileTests::DoublyLinkedListTest() {
                     inputFile >> value;
                     list.insertHead(value);
                 }
-                randNum = rand() % 1000 - 1;
+                randNum = rand() % 1000000 - 1;
                 time.timeStart();
                 list.insertHead(randNum);
                 time.timeStop();
@@ -77,7 +77,7 @@ void FromFileTests::DoublyLinkedListTest() {
                     inputFile >> value;
                     list.insertHead(value);
                 }
-                randNum = rand() % 1000 - 1;
+                randNum = rand() % 1000000 - 1;
                 time.timeStart();
                 list.insertTail(randNum);
                 time.timeStop();
@@ -90,7 +90,7 @@ void FromFileTests::DoublyLinkedListTest() {
                     inputFile >> value;
                     list.insertHead(value);
                 }
-                randNum = rand() % 1000 - 1;
+                randNum = rand() % 1000000 - 1;
                 randIndex = rand() % list.size;
                 time.timeStart();
                 list.insert(randNum, randIndex);
@@ -171,6 +171,8 @@ void FromFileTests::ArrayTest() {
     DynamicArray array;
     int choise = -1;
     int value;
+    int randNum;
+    int randIndex;
     string inputFileName;
     ifstream inputFile;
 
@@ -212,8 +214,9 @@ void FromFileTests::ArrayTest() {
                     inputFile >> value;
                     array.insertHead(value);
                 }
+                randNum = rand() % 500000 - 1;
                 time.timeStart();
-                array.insertHead(rand() % 500000 - 1);
+                array.insertHead(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
                 inputFile.close();
@@ -224,8 +227,9 @@ void FromFileTests::ArrayTest() {
                     inputFile >> value;
                     array.insertHead(value);
                 }
+                randNum = rand() % 500000 - 1;
                 time.timeStart();
-                array.insertTail(rand() % 500000 - 1);
+                array.insertTail(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
 
@@ -237,8 +241,10 @@ void FromFileTests::ArrayTest() {
                     inputFile >> value;
                     array.insertHead(value);
                 }
+                randNum = rand() % 500000 - 1;
+                randIndex = rand() % array.size;
                 time.timeStart();
-                array.insert(rand() % 500000 - 1, rand() % array.size);
+                array.insert(randNum, randIndex);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
                 inputFile.close();
@@ -273,8 +279,9 @@ void FromFileTests::ArrayTest() {
                     inputFile >> value;
                     array.insertHead(value);
                 }
+                randIndex = rand() % array.size;
                 time.timeStart();
-                array.remove(rand() % array.size);
+                array.remove(randIndex);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
                 inputFile.close();
@@ -285,8 +292,9 @@ void FromFileTests::ArrayTest() {
                     inputFile >> value;
                     array.insertHead(value);
                 }
+                randNum = rand() % 500000 - 1;
                 time.timeStart();
-                array.checkIfExist(rand() % 500000 - 1);
+                array.checkIfExist(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
 
@@ -309,6 +317,8 @@ void FromFileTests::BinaryHeapTest() {
     BinaryHeap binaryHeap;
     int choise = -1;
     int value;
+    int randNum;
+    int randIndex;
     string inputFileName;
     ifstream inputFile;
 
@@ -345,8 +355,9 @@ void FromFileTests::BinaryHeapTest() {
                     inputFile >> value;
                     binaryHeap.insert(value);
                 }
+                randNum = rand() % 500000 - 1;
                 time.timeStart();
-                binaryHeap.insert(rand() % 500000 - 1);
+                binaryHeap.insert(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
                 break;
@@ -367,14 +378,15 @@ void FromFileTests::BinaryHeapTest() {
                     inputFile >> value;
                     binaryHeap.insert(value);
                 }
+                randNum = rand() % 500000 - 1;
                 time.timeStart();
-                bool ifExist;
-                ifExist = binaryHeap.checkIfExist(rand() % 500000 - 1);
-                if (ifExist) {
-                    cout << "This element exists in Heap " << endl;
-                } else
-                    cout << "This element doesn't exists in Heap " << endl;
+                binaryHeap.checkIfExist(randNum);
                 time.timeStop();
+                if (binaryHeap.checkIfExist(randNum)) {
+                    cout << "This element exists in Heap " << endl;
+                } else {
+                    cout << "This element doesn't exists in Heap " << endl;
+                }
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
                 break;
 
@@ -399,6 +411,8 @@ void FromFileTests::RedBlackTreeTest() {
     RedBlackTree rBTree;
     int choise = -1;
     int value;
+    int randNum;
+    int randIndex;
     string inputFileName;
     ifstream inputFile;
 
@@ -438,8 +452,9 @@ void FromFileTests::RedBlackTreeTest() {
                     inputFile >> value;
                     rBTree.insert(value);
                 }
+                randNum = rand() % 500000 - 1;
                 time.timeStart();
-                rBTree.insert(rand() % 500000 - 1);
+                rBTree.insert(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
                 break;
@@ -449,8 +464,9 @@ void FromFileTests::RedBlackTreeTest() {
                     inputFile >> value;
                     rBTree.insert(value);
                 }
+                randNum = rand() % 500000 - 1;
                 time.timeStart();
-                rBTree.deleteNode(rand() % 500000 - 1);
+                rBTree.deleteNode(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
                 break;
@@ -460,12 +476,15 @@ void FromFileTests::RedBlackTreeTest() {
                     inputFile >> value;
                     rBTree.insert(value);
                 }
+                randNum = rand() % 500000 - 1;
                 time.timeStart();
-                if (rBTree.searchTree(rand() % 500000 - 1) != nullptr) {
-                    cout << "This element exists in Tree " << endl;
-                } else
-                    cout << "This element doesn't exists in Tree " << endl;
+                rBTree.searchTree(randNum);
                 time.timeStop();
+                if (rBTree.searchTree(randNum) != nullptr) {
+                    cout << "This element exists in Tree " << endl;
+                } else {
+                    cout << "This element doesn't exists in Tree " << endl;
+                }
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
                 break;
 

@@ -22,8 +22,7 @@ DoublyLinkedList::~DoublyLinkedList() {
 }
 
 void DoublyLinkedList::insertHead(int value) {
-    ListNode *node = new ListNode(value, nullptr, nullptr);
-    node->next = head;
+    ListNode *node = new ListNode(value, nullptr, head);
     if (head != nullptr) {
         head->prev = node;
     } else {
@@ -34,8 +33,7 @@ void DoublyLinkedList::insertHead(int value) {
 }
 
 void DoublyLinkedList::insertTail(int value) {
-    ListNode *node = new ListNode(value, nullptr, nullptr);
-    node->prev = tail;
+    ListNode *node = new ListNode(value, tail, nullptr);
     if (tail != nullptr) {
         tail->next = node;
     } else {
