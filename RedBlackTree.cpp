@@ -3,7 +3,8 @@
 //
 
 #include "RedBlackTree.h"
-
+// Tworzenie drzewa Red-Black.
+// Inicjalizacja koloru NIL na 0 (czarny), wskaźników left i right na nullptr oraz ustawienie korzenia na NIL.
 RedBlackTree::RedBlackTree() {
     NIL = new Node;
     NIL->color = 0;
@@ -12,20 +13,15 @@ RedBlackTree::RedBlackTree() {
     root = NIL;
 }
 
+// Usuwanie drzewa Red-Black.
+// Usunięcie korzenia oraz NIL-a.
 RedBlackTree::~RedBlackTree() {
     delete (root);
     delete NIL;
 }
 
-void RedBlackTree::initializeNULLNode(NodePtr node, NodePtr parent) {
-    node->data = 0;
-    node->parent = parent;
-    node->left = nullptr;
-    node->right = nullptr;
-    node->color = 0;
-}
-
-// Preorder
+// Przejście drzewa w porządku Preorder.
+// Wyświetlenie wartości w węźle, przejście do lewego poddrzewa, przejście do prawego poddrzewa.
 void RedBlackTree::preOrderHelper(NodePtr node) {
     if (node != NIL) {
         cout << node->data << " ";
@@ -34,7 +30,8 @@ void RedBlackTree::preOrderHelper(NodePtr node) {
     }
 }
 
-// Inorder
+// Przejście drzewa w porządku Inorder.
+// Przejście do lewego poddrzewa, wyświetlenie wartości w węźle, przejście do prawego poddrzewa.
 void RedBlackTree::inOrderHelper(NodePtr node) {
     if (node != NIL) {
         inOrderHelper(node->left);
@@ -43,7 +40,8 @@ void RedBlackTree::inOrderHelper(NodePtr node) {
     }
 }
 
-// Post order
+// Przejście drzewa w porządku Postorder.
+// Przejście do lewego poddrzewa, przejście do prawego poddrzewa, wyświetlenie wartości w węźle.
 void RedBlackTree::postOrderHelper(NodePtr node) {
     if (node != NIL) {
         postOrderHelper(node->left);
@@ -63,7 +61,7 @@ NodePtr RedBlackTree::searchTreeHelper(NodePtr node, int key) {
     return searchTreeHelper(node->right, key);
 }
 
-// For balancing the tree after deletion
+// naprawa drzewa po usunieciu wierzcholka
 void RedBlackTree::deleteFix(NodePtr x) {
     NodePtr s;
     while (x != root && x->color == 0) {
@@ -102,7 +100,7 @@ void RedBlackTree::deleteFix(NodePtr x) {
                 s = x->parent->left;
             }
 
-            if (s->right->color == 0 && s->right->color == 0) {
+            if (s->right->color == 0) {
                 s->color = 1;
                 x = x->parent;
             } else {
@@ -186,7 +184,7 @@ void RedBlackTree::deleteNodeHelper(NodePtr node, int key) {
     }
 }
 
-// For balancing the tree after insertion
+// naprawa drzewa po dodaniu wierzcholka
 void RedBlackTree::insertFix(NodePtr k) {
     NodePtr u;
     while (k->parent->color == 1) {
@@ -258,7 +256,7 @@ void RedBlackTree::inorder() {
 }
 
 void RedBlackTree::postorder() {
-    postOrderHelper(this->root);
+            postOrderHelper(this->root);
 }
 
 NodePtr RedBlackTree::searchTree(int k) {
@@ -272,40 +270,8 @@ NodePtr RedBlackTree::minimum(NodePtr node) {
     return node;
 }
 
-NodePtr RedBlackTree::maximum(NodePtr node) {
-    while (node->right != NIL) {
-        node = node->right;
-    }
-    return node;
-}
 
-NodePtr RedBlackTree::successor(NodePtr x) {
-    if (x->right != NIL) {
-        return minimum(x->right);
-    }
-
-    NodePtr y = x->parent;
-    while (y != NIL && x == y->right) {
-        x = y;
-        y = y->parent;
-    }
-    return y;
-}
-
-NodePtr RedBlackTree::predecessor(NodePtr x) {
-    if (x->left != NIL) {
-        return maximum(x->left);
-    }
-
-    NodePtr y = x->parent;
-    while (y != NIL && x == y->left) {
-        x = y;
-        y = y->parent;
-    }
-
-    return y;
-}
-
+//rotacja w lewo
 void RedBlackTree::leftRotate(NodePtr x) {
     NodePtr y = x->right;
     x->right = y->left;
@@ -323,7 +289,7 @@ void RedBlackTree::leftRotate(NodePtr x) {
     y->left = x;
     x->parent = y;
 }
-
+//rotacja w prawo
 void RedBlackTree::rightRotate(NodePtr x) {
     NodePtr y = x->left;
     x->left = y->right;
@@ -342,9 +308,9 @@ void RedBlackTree::rightRotate(NodePtr x) {
     x->parent = y;
 }
 
-// Inserting a node
+// dodawanie wierzcholka do drzewa
 void RedBlackTree::insert(int key) {
-    NodePtr node = new Node;
+    auto node = new Node;
     node->parent = nullptr;
     node->data = key;
     node->left = NIL;
@@ -384,14 +350,11 @@ void RedBlackTree::insert(int key) {
     insertFix(node);
 }
 
-NodePtr RedBlackTree::getRoot() {
-    return this->root;
-}
-
+//usuwanie wierzcholka
 void RedBlackTree::deleteNode(int data) {
     deleteNodeHelper(this->root, data);
 }
-
+// wyswietlanie drzewa
 void RedBlackTree::printTree() {
     if (root) {
         printHelper(this->root, "", true);

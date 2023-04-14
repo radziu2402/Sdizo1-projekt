@@ -146,6 +146,10 @@ void FromFileTests::DoublyLinkedListTest() {
                 list.checkIfExist(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                if(list.checkIfExist(randNum)){
+                    cout << "This element exists in list " << endl;
+                }
+                else  cout << "This element doesnt exists in list " << endl;
                 inputFile.close();
                 break;
 
@@ -464,7 +468,8 @@ void FromFileTests::RedBlackTreeTest() {
                     inputFile >> value;
                     rBTree.insert(value);
                 }
-                randNum = rand() % 500000 - 1;
+                cout << "Value: ";
+                cin >> randNum;
                 time.timeStart();
                 rBTree.deleteNode(randNum);
                 time.timeStop();
@@ -476,7 +481,8 @@ void FromFileTests::RedBlackTreeTest() {
                     inputFile >> value;
                     rBTree.insert(value);
                 }
-                randNum = rand() % 500000 - 1;
+                cout << "Value: ";
+                cin >> randNum;
                 time.timeStart();
                 rBTree.searchTree(randNum);
                 time.timeStop();

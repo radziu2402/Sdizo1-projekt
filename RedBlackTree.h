@@ -25,7 +25,6 @@ private:
     NodePtr root;
     NodePtr NIL;
 
-    void initializeNULLNode(NodePtr node, NodePtr parent);
 
     void preOrderHelper(NodePtr node);
 
@@ -47,17 +46,10 @@ private:
 
     NodePtr minimum(NodePtr node);
 
-    NodePtr maximum(NodePtr node);
-
-    NodePtr successor(NodePtr x);
-
-    NodePtr predecessor(NodePtr x);
-
     void leftRotate(NodePtr x);
 
     void rightRotate(NodePtr x);
 
-    NodePtr getRoot();
 
 public:
     RedBlackTree();
