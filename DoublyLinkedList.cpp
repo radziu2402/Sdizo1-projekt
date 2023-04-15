@@ -25,7 +25,8 @@ DoublyLinkedList::~DoublyLinkedList() {
 
 // Implementacja metody insertHead klasy DoublyLinkedList
 void DoublyLinkedList::insertHead(int value) {
-    ListNode *node = new ListNode(value, nullptr, head); // Tworzy nowy węzeł z wartością, poprzednim elementem ustawionym na nullptr oraz następnym na głowę listy
+    auto *node = new ListNode(value, nullptr,
+                                  head); // Tworzy nowy węzeł z wartością, poprzednim elementem ustawionym na nullptr oraz następnym na głowę listy
     if (head != nullptr) {
         head->prev = node; // Jeśli lista nie jest pusta, ustawia poprzedni element głowy na nowy węzeł
     } else {
@@ -37,7 +38,7 @@ void DoublyLinkedList::insertHead(int value) {
 
 // Implementacja metody insertTail klasy DoublyLinkedList
 void DoublyLinkedList::insertTail(int value) {
-    ListNode *node = new ListNode(value, tail, nullptr); // Tworzy nowy węzeł z wartością, poprzednim elementem ustawionym na ogon listy oraz następnym na nullptr
+    auto *node = new ListNode(value, tail,nullptr); // Tworzy nowy węzeł z wartością, poprzednim elementem ustawionym na ogon listy oraz następnym na nullptr
     if (tail != nullptr) {
         tail->next = node; // Jeśli lista nie jest pusta, ustawia następny element ogona na nowy węzeł
     } else {
@@ -51,7 +52,7 @@ void DoublyLinkedList::insertTail(int value) {
 void DoublyLinkedList::insert(int value, int index) {
 // Sprawdzenie, czy indeks jest poprawny
     if (index < 0 || index > size) {
-        cout << "Nie ma elementu o indeksie: [" << index << "]" << endl;
+        cout << "There is no element with index: [" << index << "]" << endl;
         return;
     }
 
@@ -71,8 +72,8 @@ void DoublyLinkedList::insert(int value, int index) {
         for (int i = 0; i < index - 1; i++) {
             prev_node = prev_node->next;
         }
-        ListNode *next_node = prev_node->next;
-        ListNode *node = new ListNode(value, prev_node, next_node);
+        auto next_node = prev_node->next;
+        auto *node = new ListNode(value, prev_node, next_node);
         prev_node->next = node;
         next_node->prev = node;
     }
@@ -83,10 +84,15 @@ void DoublyLinkedList::insert(int value, int index) {
 // usuwa element na początku listy dwukierunkowej
 void DoublyLinkedList::removeHead() {
     if (head != nullptr) {
-// Ustawia wskaźnik prev elementu head na nullptr, ponieważ będzie to nowa głowa listy.
-        head->next->prev = nullptr;
-// Ustawia wskaźnik head na następny element.
-        head = head->next;
+        if (size != 1) {
+            // Ustawia wskaźnik prev elementu head na nullptr, ponieważ będzie to nowa głowa listy.
+            head->next->prev = nullptr;
+            // Ustawia wskaźnik head na następny element.
+            head = head->next;
+        } else {
+            head = nullptr;
+            tail = nullptr;
+        }
         size--;
     } else {
         cout << "List is empty" << endl;
@@ -96,10 +102,15 @@ void DoublyLinkedList::removeHead() {
 // usuwa element na końcu listy dwukierunkowej
 void DoublyLinkedList::removeTail() {
     if (tail != nullptr) {
-// Ustawia wskaźnik next elementu tail na nullptr, ponieważ będzie to nowy koniec listy.
-        tail->prev->next = nullptr;
-// Ustawia wskaźnik tail na poprzedni element.
-        tail = tail->prev;
+        if (size != 1) {
+            // Ustawia wskaźnik next elementu tail na nullptr, ponieważ będzie to nowy koniec listy.
+            tail->prev->next = nullptr;
+            // Ustawia wskaźnik tail na poprzedni element.
+            tail = tail->prev;
+        } else {
+            head = nullptr;
+            tail = nullptr;
+        }
         size--;
     } else {
         cout << "List is empty" << endl;
@@ -127,7 +138,7 @@ void DoublyLinkedList::remove(int index) {
     }
 
     // w przeciwnym razie znajdź element o danym indeksie i usuń go
-    ListNode* node = head;
+    ListNode *node = head;
     for (int i = 0; i < index; i++) {
         node = node->next;
     }
