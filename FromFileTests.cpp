@@ -35,7 +35,10 @@ void FromFileTests::DoublyLinkedListTest() {
         cout << "Failed to open input file." << endl;
         return;
     }
-
+    while (inputFile.good()) {
+        inputFile >> value;
+        list.insertTail(value);
+    }
     while (choise != 0) {
         cout << "Choose what do you want to do:" << endl;
         cout << "   1. Insert head" << endl;
@@ -60,88 +63,66 @@ void FromFileTests::DoublyLinkedListTest() {
                 break;
 
             case 1:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    list.insertHead(value);
-                }
-                randNum = rand() % 1000000 - 1;
+                cout << "Value: ";
+                cin >> randNum;
                 time.timeStart();
                 list.insertHead(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
+                list.displayList();
                 break;
 
             case 2:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    list.insertHead(value);
-                }
-                randNum = rand() % 1000000 - 1;
+                cout << "Value: ";
+                cin >> randNum;
                 time.timeStart();
                 list.insertTail(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
+                list.displayList();
                 break;
 
             case 3:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    list.insertHead(value);
-                }
-                randNum = rand() % 1000000 - 1;
-                randIndex = rand() % list.size;
+                cout << "Value: ";
+                cin >> randNum;
+                cout << "Index: ";
+                cin >> randIndex;
                 time.timeStart();
                 list.insert(randNum, randIndex);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
+                list.displayList();
                 break;
 
             case 4:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    list.insertHead(value);
-                }
                 time.timeStart();
                 list.removeHead();
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
+                list.displayList();
                 break;
 
             case 5:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    list.insertHead(value);
-                }
                 time.timeStart();
                 list.removeTail();
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
+                list.displayList();
                 break;
 
             case 6:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    list.insertHead(value);
-                }
-                randIndex = rand() % list.size;
+                cout << "Index: ";
+                cin >> randIndex;
                 time.timeStart();
                 list.remove(randIndex);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
+                list.displayList();
                 break;
 
             case 7:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    list.insertHead(value);
-                }
-                randNum = rand() % 1000 - 1;
+                cout << "Value: ";
+                cin >> randNum;
                 time.timeStart();
                 list.checkIfExist(randNum);
                 time.timeStop();
@@ -150,7 +131,6 @@ void FromFileTests::DoublyLinkedListTest() {
                     cout << "This element exists in list " << endl;
                 }
                 else  cout << "This element doesnt exists in list " << endl;
-                inputFile.close();
                 break;
 
             case 8:
@@ -191,6 +171,10 @@ void FromFileTests::ArrayTest() {
         cout << "Failed to open input file." << endl;
         return;
     }
+    while (inputFile.good()) {
+        inputFile >> value;
+        array.insertTail(value);
+    }
     while (choise != 0) {
         cout << "Choose what do you want to do:" << endl;
         cout << "   1. Insert head" << endl;
@@ -214,95 +198,70 @@ void FromFileTests::ArrayTest() {
                 break;
 
             case 1:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    array.insertHead(value);
-                }
-                randNum = rand() % 500000 - 1;
+                cout << "Value: ";
+                cin >> randNum;
                 time.timeStart();
                 array.insertHead(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
+                array.displayArray();
                 break;
 
             case 2:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    array.insertHead(value);
-                }
-                randNum = rand() % 500000 - 1;
+                cout << "Value: ";
+                cin >> randNum;
                 time.timeStart();
                 array.insertTail(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-
-                inputFile.close();
+                array.displayArray();
                 break;
 
             case 3:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    array.insertHead(value);
-                }
-                randNum = rand() % 500000 - 1;
-                randIndex = rand() % array.size;
+                cout << "Value: ";
+                cin >> randNum;
+                cout << "Index: ";
+                cin >> randIndex;
                 time.timeStart();
                 array.insert(randNum, randIndex);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
+                array.displayArray();
                 break;
 
             case 4:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    array.insertHead(value);
-                }
                 time.timeStart();
                 array.removeHead();
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
+                array.displayArray();
                 break;
 
             case 5:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    array.insertHead(value);
-                }
                 time.timeStart();
                 array.removeTail();
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
+                array.displayArray();
                 break;
 
             case 6:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    array.insertHead(value);
-                }
-                randIndex = rand() % array.size;
+                cout << "Value: ";
+                cin >> randIndex;
                 time.timeStart();
                 array.remove(randIndex);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                inputFile.close();
+                array.displayArray();
                 break;
 
             case 7:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    array.insertHead(value);
-                }
-                randNum = rand() % 500000 - 1;
+                cout << "Value: ";
+                cin >> randNum;
                 time.timeStart();
                 array.checkIfExist(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-
-                inputFile.close();
                 break;
 
             case 8:
@@ -337,6 +296,10 @@ void FromFileTests::BinaryHeapTest() {
         cout << "Failed to open input file." << endl;
         return;
     }
+    while (inputFile.good()) {
+        inputFile >> value;
+        binaryHeap.insert(value);
+    }
     while (choise != 0) {
         cout << "Choose what do you want to do:" << endl;
         cout << "    1. Insert value" << endl;
@@ -346,6 +309,7 @@ void FromFileTests::BinaryHeapTest() {
         cout << "    0. Exit" << endl << endl;
         cout << "Choise: ";
         cin >> choise;
+
         switch (choise) {
             default:
                 cout << "Wrong choise!" << endl;
@@ -355,38 +319,30 @@ void FromFileTests::BinaryHeapTest() {
                 break;
 
             case 1:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    binaryHeap.insert(value);
-                }
-                randNum = rand() % 500000 - 1;
+                cout << "Value: ";
+                cin >> randNum;
                 time.timeStart();
                 binaryHeap.insert(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                binaryHeap.displayHeap();
                 break;
 
             case 2:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    binaryHeap.insert(value);
-                }
                 time.timeStart();
                 binaryHeap.deleteRoot();
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                binaryHeap.displayHeap();
                 break;
 
             case 3:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    binaryHeap.insert(value);
-                }
-                randNum = rand() % 500000 - 1;
+                cout << "Value: ";
+                cin >> randNum;
                 time.timeStart();
                 binaryHeap.checkIfExist(randNum);
                 time.timeStop();
-                if (binaryHeap.checkIfExist(randNum)) {
+                if (binaryHeap.checkIfExist(randNum)!=-1) {
                     cout << "This element exists in Heap " << endl;
                 } else {
                     cout << "This element doesn't exists in Heap " << endl;
@@ -395,10 +351,6 @@ void FromFileTests::BinaryHeapTest() {
                 break;
 
             case 4:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    binaryHeap.insert(value);
-                }
                 time.timeStart();
                 binaryHeap.displayHeap();
                 time.timeStop();
@@ -431,6 +383,11 @@ void FromFileTests::RedBlackTreeTest() {
         cout << "Failed to open input file." << endl;
         return;
     }
+
+    while (inputFile.good()) {
+        inputFile >> value;
+        rBTree.insert(value);
+    }
     while (choise != 0) {
         cout << "Choose what do you want to do:" << endl;
         cout << "    1. Insert value" << endl;
@@ -443,6 +400,7 @@ void FromFileTests::RedBlackTreeTest() {
         cout << "    0. Exit" << endl << endl;
         cout << "Choise: ";
         cin >> choise;
+
         switch (choise) {
             default:
                 cout << "Wrong choise!" << endl;
@@ -452,35 +410,26 @@ void FromFileTests::RedBlackTreeTest() {
                 break;
 
             case 1:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    rBTree.insert(value);
-                }
-                randNum = rand() % 500000 - 1;
+                cout << "Value: ";
+                cin >> randNum;
                 time.timeStart();
                 rBTree.insert(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                rBTree.printTree();
                 break;
 
             case 2:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    rBTree.insert(value);
-                }
                 cout << "Value: ";
                 cin >> randNum;
                 time.timeStart();
                 rBTree.deleteNode(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                rBTree.printTree();
                 break;
 
             case 3:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    rBTree.insert(value);
-                }
                 cout << "Value: ";
                 cin >> randNum;
                 time.timeStart();
@@ -495,10 +444,6 @@ void FromFileTests::RedBlackTreeTest() {
                 break;
 
             case 4:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    rBTree.insert(value);
-                }
                 time.timeStart();
                 rBTree.printTree();
                 time.timeStop();
@@ -506,10 +451,6 @@ void FromFileTests::RedBlackTreeTest() {
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
                 break;
             case 5:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    rBTree.insert(value);
-                }
                 time.timeStart();
                 rBTree.inorder();
                 time.timeStop();
@@ -517,10 +458,6 @@ void FromFileTests::RedBlackTreeTest() {
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
                 break;
             case 6:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    rBTree.insert(value);
-                }
                 time.timeStart();
                 rBTree.preorder();
                 time.timeStop();
@@ -528,10 +465,6 @@ void FromFileTests::RedBlackTreeTest() {
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
                 break;
             case 7:
-                while (inputFile.good()) {
-                    inputFile >> value;
-                    rBTree.insert(value);
-                }
                 time.timeStart();
                 rBTree.postorder();
                 time.timeStop();

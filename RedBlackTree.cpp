@@ -229,21 +229,18 @@ void RedBlackTree::insertFix(NodePtr k) {
     root->color = 0;
 }
 
-void RedBlackTree::printHelper(NodePtr root, string indent, bool last) {
+void RedBlackTree::printHelper(NodePtr root, int level) {
     if (root != NIL) {
-        cout << indent;
-        if (last) {
-            cout << "R----";
-            indent += "   ";
-        } else {
-            cout << "L----";
-            indent += "|  ";
+        printHelper(root->right, level + 1);
+        for (int i = 0; i < level; i++) {
+            cout << "    ";
         }
-
-        string sColor = root->color ? "RED" : "BLACK";
-        cout << root->data << "(" << sColor << ")" << endl;
-        printHelper(root->left, indent, false);
-        printHelper(root->right, indent, true);
+        if (root->color) {
+            cout << root->data << " (R)" << endl;
+        } else {
+            cout << root->data << " (B)" << endl;
+        }
+        printHelper(root->left, level + 1);
     }
 }
 
@@ -256,7 +253,7 @@ void RedBlackTree::inorder() {
 }
 
 void RedBlackTree::postorder() {
-            postOrderHelper(this->root);
+    postOrderHelper(this->root);
 }
 
 NodePtr RedBlackTree::searchTree(int k) {
@@ -357,6 +354,7 @@ void RedBlackTree::deleteNode(int data) {
 // wyswietlanie drzewa
 void RedBlackTree::printTree() {
     if (root) {
-        printHelper(this->root, "", true);
+//        printHelper(this->root, "", true);
+        printHelper(this->root,0);
     }
 }

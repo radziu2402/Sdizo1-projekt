@@ -186,7 +186,6 @@ bool DoublyLinkedList::checkIfExist(int value) {
                 return false;
             }
         }
-        cout << "This value exists in list" << endl;
         return true;
     } else {
         cout << "List is empty" << endl;

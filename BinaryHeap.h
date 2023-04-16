@@ -6,26 +6,36 @@
 #define SDIZO1_BINARYHEAP_H
 
 class BinaryHeap {
+
+private:
+    int *data;
+    int len;
+
+    void heapify(int index);
+
+    void downHeapify(int index);
+
+    void swap(int index1, int index2);
+
+    int left(int index);
+
+    int right(int index);
+
 public:
-    int *array;
-    int size;
+    void insert(int elem);
+
+    void deleteRoot();
+
+    int checkIfExist(int val);
 
     BinaryHeap();
 
     ~BinaryHeap();
 
-    void insert(int value);
-
-    void deleteRoot();
-
-    bool checkIfExist(int value);
-
     void displayHeap();
 
-private:
-    void heapify();
-
     void printHeap(int *heapArray, int heapSize, int currentNodeIndex, int levelIndent);
+
 };
 
 #endif //SDIZO1_BINARYHEAP_H

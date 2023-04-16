@@ -42,7 +42,7 @@ private:
 
     void insertFix(NodePtr k);
 
-    void printHelper(NodePtr root, string indent, bool last);
+    void printHelper(NodePtr root, int level);
 
     NodePtr minimum(NodePtr node);
 

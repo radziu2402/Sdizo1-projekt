@@ -178,4 +178,3 @@ bool DynamicArray::checkIfExist(int value) {
     cout << "This element doesnt exist in array" << endl;    // W przeciwnym razie wypisuje informację, że dany element nie istnieje w tablicy i zwraca false
     return false;
 }
-
