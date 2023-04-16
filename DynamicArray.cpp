@@ -122,11 +122,10 @@ void DynamicArray::removeTail() {
         cout << "Array is empty" << endl;
     }
 }
-
 // usuwa element pod wybranym indexem tablicy dynamicznej
 void DynamicArray::remove(int index) {
     // Sprawdzamy czy istnieje co najmniej jeden element w tablicy i czy podany indeks jest poprawny
-    if (size > 0 || index > 0 || index < size) {
+    if (size > 0 && index >= 0 && index < size) {
         // Tworzymy nowy dynamiczny bufor o rozmiarze size-1
         int *newHead = new int[size - 1];
 
@@ -168,13 +167,11 @@ void DynamicArray::displayArray() {
 }
 
 // Metoda sprawdzająca, czy element o podanej wartości istnieje w tablicy
-bool DynamicArray::checkIfExist(int value) {
+int DynamicArray::checkIfExist(int value) {
     for (int i = 0; i < size; i++) {
-        if (head[i] == value) {    // Jeśli wartość elementu na indeksie i jest równa wartości value, to zwraca true i wypisuje informację, że element istnieje na danym indeksie
-            cout << "This value exists in array with index: [" << i << "]" << endl;
-            return true;
+        if (head[i] == value) {    // Jeśli wartość elementu na indeksie i jest równa wartości value, to zwraca index
+            return i;
         }
     }
-    cout << "This element doesnt exist in array" << endl;    // W przeciwnym razie wypisuje informację, że dany element nie istnieje w tablicy i zwraca false
-    return false;
+    return -1;
 }

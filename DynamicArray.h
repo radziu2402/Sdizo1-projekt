@@ -29,7 +29,7 @@ public:
 
     void displayArray();
 
-    bool checkIfExist(int value);
+    int checkIfExist(int value);
 };
 
 

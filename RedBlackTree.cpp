@@ -11,6 +11,7 @@ RedBlackTree::RedBlackTree() {
     NIL->left = nullptr;
     NIL->right = nullptr;
     root = NIL;
+    size = 0;
 }
 
 // Usuwanie drzewa Red-Black.
@@ -51,10 +52,12 @@ void RedBlackTree::postOrderHelper(NodePtr node) {
 }
 
 NodePtr RedBlackTree::searchTreeHelper(NodePtr node, int key) {
-    if (node == NIL || key == node->data) {
+    if (key == node->data) {
         return node;
     }
-
+    if (node == NIL) {
+        return nullptr;
+    }
     if (key < node->data) {
         return searchTreeHelper(node->left, key);
     }
@@ -179,6 +182,7 @@ void RedBlackTree::deleteNodeHelper(NodePtr node, int key) {
         y->color = z->color;
     }
     delete z;
+    size--;
     if (y_original_color == 0) {
         deleteFix(x);
     }
@@ -229,18 +233,18 @@ void RedBlackTree::insertFix(NodePtr k) {
     root->color = 0;
 }
 
-void RedBlackTree::printHelper(NodePtr root, int level) {
-    if (root != NIL) {
-        printHelper(root->right, level + 1);
+void RedBlackTree::printHelper(NodePtr ptr, int level) {
+    if (ptr != NIL) {
+        printHelper(ptr->right, level + 1);
         for (int i = 0; i < level; i++) {
             cout << "    ";
         }
-        if (root->color) {
-            cout << root->data << " (R)" << endl;
+        if (ptr->color) {
+            cout << ptr->data << " (R)" << endl;
         } else {
-            cout << root->data << " (B)" << endl;
+            cout << ptr->data << " (B)" << endl;
         }
-        printHelper(root->left, level + 1);
+        printHelper(ptr->left, level + 1);
     }
 }
 
@@ -334,6 +338,7 @@ void RedBlackTree::insert(int key) {
     } else {
         y->right = node;
     }
+    size++; //zwiększenie zmiennej size o 1 po dodaniu wierzchołka
 
     if (node->parent == nullptr) {
         node->color = 0;
@@ -354,7 +359,6 @@ void RedBlackTree::deleteNode(int data) {
 // wyswietlanie drzewa
 void RedBlackTree::printTree() {
     if (root) {
-//        printHelper(this->root, "", true);
         printHelper(this->root,0);
     }
 }

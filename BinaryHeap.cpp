@@ -41,8 +41,12 @@ void BinaryHeap::insert(int elem) {
     }
 }
 
+
 void BinaryHeap::deleteRoot() {
-    if (len == 0) return;
+    if (len == 0){
+        std::cout << "Heap is empty" << std::endl;
+        return;
+    }
     int index = checkIfExist(data[0]);
     if (index == -1) return;
     if (index != len - 1)

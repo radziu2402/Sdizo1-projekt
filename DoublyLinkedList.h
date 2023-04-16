@@ -36,7 +36,7 @@ public:
 
     void displayListBackward();
 
-    bool checkIfExist(int value);
+    int checkIfExist(int value);
 };
 
 

@@ -21,6 +21,7 @@ void FromFileTests::DoublyLinkedListTest() {
     int value;
     int randNum;
     int randIndex;
+    int findIndex;
     string inputFileName;
     ifstream inputFile;
 
@@ -30,15 +31,22 @@ void FromFileTests::DoublyLinkedListTest() {
     inputFile.open(inputFileName);
 
     if (inputFile.is_open()) {
-        cout << "Input file opened." << inputFileName << endl;
+        cout << "Input file opened: " << inputFileName << endl;
     } else {
-        cout << "Failed to open input file." << endl;
+        cout << "Failed to open input file. " << endl;
         return;
     }
-    while (inputFile.good()) {
-        inputFile >> value;
+    inputFile >> value;
+    int size = value;
+    while (inputFile >> value) {
         list.insertTail(value);
     }
+    if(size != list.size){
+        cout << "The size of the file does not correspond to the number of elements. " << endl;
+        return;
+    }
+    list.displayList();
+
     while (choise != 0) {
         cout << "Choose what do you want to do:" << endl;
         cout << "   1. Insert head" << endl;
@@ -124,13 +132,13 @@ void FromFileTests::DoublyLinkedListTest() {
                 cout << "Value: ";
                 cin >> randNum;
                 time.timeStart();
-                list.checkIfExist(randNum);
+                findIndex = list.checkIfExist(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
-                if(list.checkIfExist(randNum)){
-                    cout << "This element exists in list " << endl;
+                if(findIndex!=-1){
+                    cout << "This element exists in list at index [" << findIndex << "]" << endl;
                 }
-                else  cout << "This element doesnt exists in list " << endl;
+                else cout << "This element doesnt exists in list " << endl;
                 break;
 
             case 8:
@@ -157,6 +165,7 @@ void FromFileTests::ArrayTest() {
     int value;
     int randNum;
     int randIndex;
+    int findIndex;
     string inputFileName;
     ifstream inputFile;
 
@@ -166,15 +175,22 @@ void FromFileTests::ArrayTest() {
     inputFile.open(inputFileName);
 
     if (inputFile.is_open()) {
-        cout << "Input file opened." << inputFileName << endl;
+        cout << "Input file opened: " << inputFileName << endl;
     } else {
-        cout << "Failed to open input file." << endl;
+        cout << "Failed to open input file. " << endl;
         return;
     }
-    while (inputFile.good()) {
-        inputFile >> value;
+    inputFile >> value;
+    int size = value;
+    while (inputFile >> value) {
         array.insertTail(value);
     }
+    if(size != array.size){
+        cout << "The size of the file does not correspond to the number of elements. " << endl;
+        return;
+    }
+    array.displayArray();
+
     while (choise != 0) {
         cout << "Choose what do you want to do:" << endl;
         cout << "   1. Insert head" << endl;
@@ -246,7 +262,7 @@ void FromFileTests::ArrayTest() {
                 break;
 
             case 6:
-                cout << "Value: ";
+                cout << "Index: ";
                 cin >> randIndex;
                 time.timeStart();
                 array.remove(randIndex);
@@ -259,9 +275,13 @@ void FromFileTests::ArrayTest() {
                 cout << "Value: ";
                 cin >> randNum;
                 time.timeStart();
-                array.checkIfExist(randNum);
+                findIndex = array.checkIfExist(randNum);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                if(findIndex!=-1){
+                    cout << "This element exists in array at index [" << findIndex << "]" << endl;
+                }
+                else cout << "This element doesnt exists in array " << endl;
                 break;
 
             case 8:
@@ -281,7 +301,6 @@ void FromFileTests::BinaryHeapTest() {
     int choise = -1;
     int value;
     int randNum;
-    int randIndex;
     string inputFileName;
     ifstream inputFile;
 
@@ -296,10 +315,17 @@ void FromFileTests::BinaryHeapTest() {
         cout << "Failed to open input file." << endl;
         return;
     }
-    while (inputFile.good()) {
-        inputFile >> value;
+    inputFile >> value;
+    int size = value;
+    while (inputFile >> value) {
         binaryHeap.insert(value);
     }
+    if(size != binaryHeap.len){
+        cout << "The size of the file does not correspond to the number of elements. " << endl;
+        return;
+    }
+    binaryHeap.displayHeap();
+
     while (choise != 0) {
         cout << "Choose what do you want to do:" << endl;
         cout << "    1. Insert value" << endl;
@@ -368,7 +394,7 @@ void FromFileTests::RedBlackTreeTest() {
     int choise = -1;
     int value;
     int randNum;
-    int randIndex;
+    NodePtr nodePtr;
     string inputFileName;
     ifstream inputFile;
 
@@ -383,11 +409,17 @@ void FromFileTests::RedBlackTreeTest() {
         cout << "Failed to open input file." << endl;
         return;
     }
-
-    while (inputFile.good()) {
-        inputFile >> value;
+    inputFile >> value;
+    int size = value;
+    while (inputFile >> value) {
         rBTree.insert(value);
     }
+    if(size != rBTree.size){
+        cout << "The size of the file does not correspond to the number of elements. " << endl;
+        return;
+    }
+    rBTree.printTree();
+
     while (choise != 0) {
         cout << "Choose what do you want to do:" << endl;
         cout << "    1. Insert value" << endl;
@@ -433,9 +465,9 @@ void FromFileTests::RedBlackTreeTest() {
                 cout << "Value: ";
                 cin >> randNum;
                 time.timeStart();
-                rBTree.searchTree(randNum);
+                nodePtr = rBTree.searchTree(randNum);
                 time.timeStop();
-                if (rBTree.searchTree(randNum) != nullptr) {
+                if (nodePtr != nullptr) {
                     cout << "This element exists in Tree " << endl;
                 } else {
                     cout << "This element doesn't exists in Tree " << endl;

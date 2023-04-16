@@ -9,7 +9,7 @@ class BinaryHeap {
 
 private:
     int *data;
-    int len;
+
 
     void heapify(int index);
 
@@ -22,6 +22,7 @@ private:
     int right(int index);
 
 public:
+    int len;
     void insert(int elem);
 
     void deleteRoot();
@@ -35,7 +36,6 @@ public:
     void displayHeap();
 
     void printHeap(int *heapArray, int heapSize, int currentNodeIndex, int levelIndent);
-
 };
 
 #endif //SDIZO1_BINARYHEAP_H

@@ -26,6 +26,7 @@ private:
     NodePtr NIL;
 
 
+
     void preOrderHelper(NodePtr node);
 
     void inOrderHelper(NodePtr node);
@@ -42,7 +43,7 @@ private:
 
     void insertFix(NodePtr k);
 
-    void printHelper(NodePtr root, int level);
+    void printHelper(NodePtr ptr, int level);
 
     NodePtr minimum(NodePtr node);
 
@@ -52,6 +53,7 @@ private:
 
 
 public:
+    int size;
     RedBlackTree();
 
     ~RedBlackTree();

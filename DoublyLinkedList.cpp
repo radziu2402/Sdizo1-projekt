@@ -26,7 +26,7 @@ DoublyLinkedList::~DoublyLinkedList() {
 // Implementacja metody insertHead klasy DoublyLinkedList
 void DoublyLinkedList::insertHead(int value) {
     auto *node = new ListNode(value, nullptr,
-                                  head); // Tworzy nowy węzeł z wartością, poprzednim elementem ustawionym na nullptr oraz następnym na głowę listy
+                              head); // Tworzy nowy węzeł z wartością, poprzednim elementem ustawionym na nullptr oraz następnym na głowę listy
     if (head != nullptr) {
         head->prev = node; // Jeśli lista nie jest pusta, ustawia poprzedni element głowy na nowy węzeł
     } else {
@@ -38,7 +38,8 @@ void DoublyLinkedList::insertHead(int value) {
 
 // Implementacja metody insertTail klasy DoublyLinkedList
 void DoublyLinkedList::insertTail(int value) {
-    auto *node = new ListNode(value, tail,nullptr); // Tworzy nowy węzeł z wartością, poprzednim elementem ustawionym na ogon listy oraz następnym na nullptr
+    auto *node = new ListNode(value, tail,
+                              nullptr); // Tworzy nowy węzeł z wartością, poprzednim elementem ustawionym na ogon listy oraz następnym na nullptr
     if (tail != nullptr) {
         tail->next = node; // Jeśli lista nie jest pusta, ustawia następny element ogona na nowy węzeł
     } else {
@@ -50,34 +51,33 @@ void DoublyLinkedList::insertTail(int value) {
 
 // Metoda wstawiająca nowy węzeł z wartością "value" na określonej pozycji "index"
 void DoublyLinkedList::insert(int value, int index) {
-// Sprawdzenie, czy indeks jest poprawny
+    // Sprawdzenie, czy indeks jest poprawny
     if (index < 0 || index > size) {
         cout << "There is no element with index: [" << index << "]" << endl;
         return;
     }
 
-// Wstawienie węzła na początek listy
+    // Wstawienie węzła na początek listy
     if (index == 0) {
         insertHead(value);
         return;
     }
-// Wstawienie węzła na koniec listy
-    else if (index == size - 1) {
+
+    // Wstawienie węzła na koniec listy
+    if (index == size) {
         insertTail(value);
         return;
     }
-// Wstawienie węzła w środku listy
-    else {
-        ListNode *prev_node = head;
-        for (int i = 0; i < index - 1; i++) {
-            prev_node = prev_node->next;
-        }
-        auto next_node = prev_node->next;
-        auto *node = new ListNode(value, prev_node, next_node);
-        prev_node->next = node;
-        next_node->prev = node;
-    }
 
+    // Wstawienie węzła w środku listy
+    ListNode *prev_node = head;
+    for (int i = 0; i < index - 1; i++) {
+        prev_node = prev_node->next;
+    }
+    auto next_node = prev_node->next;
+    auto *node = new ListNode(value, prev_node, next_node);
+    prev_node->next = node;
+    next_node->prev = node;
     size++;
 }
 
@@ -177,19 +177,20 @@ void DoublyLinkedList::displayListBackward() {
 }
 
 // sprawdza, czy element o podanej wartości istnieje w liście
-bool DoublyLinkedList::checkIfExist(int value) {
+int DoublyLinkedList::checkIfExist(int value) {
     if (head != nullptr) {
         ListNode *tempNode = head;
-        while (tempNode->value != value) {
-            tempNode = tempNode->next;
-            if (!tempNode) {
-                return false;
+        int index = 0;
+        while (tempNode != nullptr) {
+            if (tempNode->value == value) {
+                return index;
             }
+            tempNode = tempNode->next;
+            index++;
         }
-        return true;
     } else {
         cout << "List is empty" << endl;
-        return false;
     }
+    return -1;
 }
 
