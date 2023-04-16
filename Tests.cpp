@@ -47,6 +47,7 @@ void Tests::ArrayTest() {
                 array.insertHead(value);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                array.displayArray();
                 break;
 
             case 2:
@@ -56,6 +57,7 @@ void Tests::ArrayTest() {
                 array.insertTail(value);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                array.displayArray();
                 break;
 
             case 3:
@@ -67,6 +69,7 @@ void Tests::ArrayTest() {
                 array.insert(value, index);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                array.displayArray();
                 break;
 
             case 4:
@@ -74,6 +77,7 @@ void Tests::ArrayTest() {
                 array.removeHead();
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                array.displayArray();
                 break;
 
             case 5:
@@ -81,6 +85,7 @@ void Tests::ArrayTest() {
                 array.removeTail();
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                array.displayArray();
                 break;
 
             case 6:
@@ -90,6 +95,7 @@ void Tests::ArrayTest() {
                 array.remove(index);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                array.displayArray();
                 break;
 
             case 7:
@@ -149,6 +155,7 @@ void Tests::DoublyLinkedListTest() {
                 list.insertHead(value);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                list.displayList();
                 break;
 
             case 2:
@@ -158,6 +165,7 @@ void Tests::DoublyLinkedListTest() {
                 list.insertTail(value);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                list.displayList();
                 break;
 
             case 3:
@@ -169,6 +177,7 @@ void Tests::DoublyLinkedListTest() {
                 list.insert(value, index);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                list.displayList();
                 break;
 
             case 4:
@@ -176,6 +185,7 @@ void Tests::DoublyLinkedListTest() {
                 list.removeHead();
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                list.displayList();
                 break;
 
             case 5:
@@ -183,6 +193,7 @@ void Tests::DoublyLinkedListTest() {
                 list.removeTail();
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                list.displayList();
                 break;
 
             case 6:
@@ -192,6 +203,7 @@ void Tests::DoublyLinkedListTest() {
                 list.remove(index);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                list.displayList();
                 break;
 
             case 7:
@@ -250,6 +262,7 @@ void Tests::BinaryHeapTest() {
                 binaryHeap.insert(value);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                binaryHeap.displayHeap();
                 break;
 
             case 2:
@@ -257,6 +270,7 @@ void Tests::BinaryHeapTest() {
                 binaryHeap.deleteRoot();
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                binaryHeap.displayHeap();
                 break;
 
             case 3:
@@ -315,6 +329,7 @@ void Tests::RedBlackTreeTest() {
                 rBTree.insert(value);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                rBTree.printTree();
                 break;
 
             case 2:
@@ -324,6 +339,7 @@ void Tests::RedBlackTreeTest() {
                 rBTree.deleteNode(value);
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                rBTree.printTree();
                 break;
 
             case 3:
@@ -336,6 +352,7 @@ void Tests::RedBlackTreeTest() {
                     cout << "This element doesn't exists in Tree " << endl;
                 time.timeStop();
                 cout << "Execution time: " << time.elapsedTime() << "ns" << endl;
+                rBTree.printTree();
                 break;
 
             case 4:
